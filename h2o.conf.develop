@@ -1,7 +1,7 @@
 hosts:
   # api
   "api.127.0.0.1.nip.io:80":
-    listen:
+    listen: &default
       port: 80
     paths:
       "/":
@@ -9,8 +9,7 @@ hosts:
 
   # admin
   "admin.127.0.0.1.nip.io:80":
-    listen:
-      port: 80
+    listen: *default
     paths:
       "/":
         mruby.handler: |
@@ -20,16 +19,14 @@ hosts:
 
   # static
   "static.127.0.0.1.nip.io:80":
-    listen:
-      port: 80
+    listen: *default
     paths:
       "/":
         file.dir: /public
 
   # web server
   "127.0.0.1.nip.io:80":
-    listen:
-      port: 80
+    listen: *default
     paths:
       "/":
         proxy.reverse.url: http://web-application:8000/
