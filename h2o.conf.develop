@@ -3,6 +3,7 @@ hosts:
   "api.127.0.0.1.nip.io:80":
     listen: &default
       port: 80
+    header.add: "Access-Control-Allow-Methods: GET,POST,OPTIONS"
     header.add: "Access-Control-Allow-Origin: *"
     paths:
       "/":
@@ -21,6 +22,7 @@ hosts:
   # static
   "static.127.0.0.1.nip.io:80":
     listen: *default
+    header.add: "Access-Control-Allow-Methods: GET,POST,OPTIONS"
     header.add: "Access-Control-Allow-Origin: *"
     paths:
       "/":
