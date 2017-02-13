@@ -12,9 +12,6 @@ hosts:
     listen: *default
     paths:
       "/":
-        mruby.handler: |
-          require "htpasswd.rb"
-          Htpasswd.new("/etc/h2o/.htpasswd", "realm-name")
         proxy.reverse.url: http://dios-application:3000/
 
   # static
